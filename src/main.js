@@ -35,13 +35,24 @@ app.innerHTML = `
     <section class="hero" aria-label="Introduction">
       <div class="hero-media">
         <picture class="hero-picture">
-          <source srcset="${asset('assets/hero.webp')}" type="image/webp" />
+          <source
+            media="(max-width: 768px)"
+            srcset="${asset('assets/hero-mobile.webp')}"
+            type="image/webp"
+          />
+          <source media="(max-width: 768px)" srcset="${asset('assets/hero-mobile.jpg')}" />
+          <source
+            media="(min-width: 769px)"
+            srcset="${asset('assets/hero-desktop.webp')}"
+            type="image/webp"
+          />
+          <source media="(min-width: 769px)" srcset="${asset('assets/hero-desktop.jpg')}" />
           <img
             src="${asset('assets/hero.jpg')}"
             alt=""
             class="hero-img"
-            width="2560"
-            height="960"
+            width="1920"
+            height="1080"
             fetchpriority="high"
             decoding="async"
           />
