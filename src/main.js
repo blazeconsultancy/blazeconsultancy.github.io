@@ -34,7 +34,18 @@ app.innerHTML = `
   <main id="main">
     <section class="hero" aria-label="Introduction">
       <div class="hero-media">
-        <img src="${asset('assets/hero.jpg')}" alt="" class="hero-img" fetchpriority="high" />
+        <picture class="hero-picture">
+          <source srcset="${asset('assets/hero.webp')}" type="image/webp" />
+          <img
+            src="${asset('assets/hero.jpg')}"
+            alt=""
+            class="hero-img"
+            width="2560"
+            height="960"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="hero-overlay"></div>
         <div class="hero-glow-path" aria-hidden="true"></div>
       </div>
@@ -195,15 +206,18 @@ const io = new IntersectionObserver(
 );
 revealEls.forEach((el) => io.observe(el));
 
-// Parallax hero
+// Subtle parallax on larger screens only (avoids mobile overflow + blur)
 const heroImg = document.querySelector('.hero-img');
-if (heroImg) {
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canParallax = window.matchMedia('(min-width: 900px)').matches;
+
+if (heroImg && canParallax && !prefersReducedMotion) {
   window.addEventListener(
     'scroll',
     () => {
       const y = window.scrollY;
       if (y < window.innerHeight) {
-        heroImg.style.transform = `translate3d(0, ${y * 0.35}px, 0) scale(1.05)`;
+        heroImg.style.transform = `translate3d(0, ${y * 0.2}px, 0)`;
       }
     },
     { passive: true }
