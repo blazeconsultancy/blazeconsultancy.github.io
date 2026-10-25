@@ -145,7 +145,7 @@ app.innerHTML = `
         <h2>Ready to move?</h2>
         <p>Tell us what you are building. We will respond with a clear next step — no generic pitch deck.</p>
         <a class="btn btn-primary btn-lg" href="mailto:hello@blazeconsultancy.dev?subject=Project%20inquiry">hello@blazeconsultancy.dev</a>
-        <p class="contact-alt">Or reach out on <a href="https://github.com/Arunshaik2001">GitHub</a>.</p>
+        <p class="contact-alt">Or find us on <a href="https://github.com/blazeconsultancy">GitHub</a>.</p>
       </div>
     </section>
   </main>
