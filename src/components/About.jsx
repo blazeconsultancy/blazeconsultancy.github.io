@@ -27,7 +27,7 @@ export function About() {
           <SectionLabel
             index="01"
             title="Built to ship, not to slide decks"
-            description="We take products from idea to production — design, build, deploy, and operate — without stitching together three vendors."
+            description="We take products from idea to production: design, build, deploy, and operate, without stitching together three vendors."
           />
           <div className="relative mx-auto max-w-xs lg:mx-0">
             <img
@@ -51,7 +51,7 @@ export function About() {
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { t: 'End-to-end', d: 'One partner across the lifecycle' },
+              { t: 'Full lifecycle', d: 'One partner across the lifecycle' },
               { t: 'Embedded', d: 'Inside your rituals and roadmap' },
               { t: 'Pragmatic', d: 'Trade-offs you can defend' },
             ].map((item, i) => (

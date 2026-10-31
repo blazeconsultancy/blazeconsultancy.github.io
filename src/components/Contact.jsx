@@ -11,12 +11,12 @@ export function Contact() {
         <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border-strong)] bg-[var(--color-surface-card)] px-6 py-14 sm:px-12 sm:py-16">
           <div className="page-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden />
           <div className="relative mx-auto max-w-2xl text-center">
-            <p className="font-mono text-xs text-blaze">04 · Contact</p>
+            <p className="font-mono text-xs text-blaze">04 Contact</p>
             <h2 className="mt-4 text-balance font-[family-name:var(--font-display)] text-3xl font-semibold sm:text-4xl md:text-5xl">
               Ready to move?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-pretty text-zinc-400">
-              Tell us what you are building. We will respond with a clear next step — no generic pitch deck.
+              Tell us what you are building. We will respond with a clear next step, not a generic pitch deck.
             </p>
             <motion.a
               href="mailto:support@blazeconsultancy.in?subject=Project%20inquiry"
@@ -51,7 +51,7 @@ export function Footer() {
           <img src={asset('assets/logo.jpg')} alt="" width={40} height={40} className="size-10 rounded-full object-cover ring-1 ring-white/10" />
           <div>
             <p className="font-[family-name:var(--font-display)] font-semibold">Blaze Consultancy</p>
-            <p className="text-sm text-zinc-500">Ideas · Technology · Real impact</p>
+            <p className="text-sm text-zinc-500">Ideas, technology, real impact</p>
           </div>
         </div>
         <p className="text-sm text-zinc-600">&copy; {new Date().getFullYear()} Blaze Consultancy</p>

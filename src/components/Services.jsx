@@ -57,24 +57,24 @@ export function Services() {
 
 const work = [
   {
-    meta: 'AGRICULTURE · PAYMENTS',
+    meta: 'AGRICULTURE, PAYMENTS',
     title: 'Agri tech payments platform on Hyperswitch',
     body: 'Built payment flows on top of Hyperswitch; integrated multiple payment methods, checkout, and settlement flows.',
   },
   {
-    meta: 'PAYMENTS · RELIABILITY',
+    meta: 'PAYMENTS, RELIABILITY',
     title: 'Payment gateway integration and support',
     body: 'Hands-on support for gateway connectors, transaction debugging, and maintainable integration structures.',
   },
   {
-    meta: 'ARCHITECTURE · CLOUD',
-    title: 'Cloud and system architecture — Osila Solutions',
+    meta: 'ARCHITECTURE, CLOUD',
+    title: 'Cloud and system architecture for Osila Solutions',
     body: 'Shaped system and cloud design for scale and budget; guided the team on technical trade-offs.',
   },
   {
-    meta: 'ECOMMERCE · RETAIL',
+    meta: 'ECOMMERCE, RETAIL',
     title: 'Ecommerce and retail application',
-    body: 'Storefront, catalog, cart, checkout, and backend — with safe deployment pipelines.',
+    body: 'Storefront, catalog, cart, checkout, and backend, with safe deployment pipelines.',
   },
 ];
 
@@ -87,7 +87,7 @@ export function Work() {
         <SectionLabel
           index="03"
           title="Selected work"
-          description="Representative engagements — more detail available under NDA."
+          description="Representative engagements. More detail is available under NDA."
         />
       </Reveal>
 

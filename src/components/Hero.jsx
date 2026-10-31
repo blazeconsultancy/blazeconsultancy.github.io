@@ -4,9 +4,9 @@ import { easeOut, fadeUp } from '../lib/motion';
 import { GhostButton, PrimaryButton } from './ui/primitives';
 
 const metrics = [
-  { value: 'End-to-end', label: 'Design through operations' },
+  { value: 'Full lifecycle', label: 'Design through operations' },
   { value: 'Embedded', label: 'Works inside your team' },
-  { value: 'Ship-focused', label: 'Outcomes over decks' },
+  { value: 'Built to ship', label: 'Outcomes over decks' },
 ];
 
 export function Hero() {
@@ -26,7 +26,7 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/[0.03] px-4 py-1.5 text-xs font-medium text-zinc-300"
           >
             <span className="size-1.5 rounded-full bg-blaze" />
-            Ideas · Technology · Real impact
+            Ideas, technology, real impact
           </motion.div>
 
           <motion.h1
@@ -47,7 +47,7 @@ export function Hero() {
             variants={fadeUp}
             transition={{ duration: 0.55, ease: easeOut, delay: 0.12 }}
           >
-            From idea to production — we design, build, deploy, and keep systems running as an embedded extension of
+            From idea to production, we design, build, deploy, and keep systems running as an embedded extension of
             your team.
           </motion.p>
 
@@ -102,7 +102,7 @@ export function Hero() {
             </picture>
             <div className="pointer-events-none absolute inset-0 bg-zinc-950/25" />
           </div>
-          <p className="mt-4 hidden text-right text-xs text-zinc-500 lg:block">Beyond the summit · Blaze Consultancy</p>
+          <p className="mt-4 hidden text-right text-xs text-zinc-500 lg:block">Beyond the summit, Blaze Consultancy</p>
         </motion.div>
       </div>
     </section>
