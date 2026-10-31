@@ -1,12 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  --color-blaze: #e85d04;
-  --color-surface: #0c0f14;
-  --color-surface-raised: #141922;
-  --color-border: rgb(255 255 255 / 0.08);
+  --font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-blaze: #f97316;
+  --color-blaze-muted: rgb(249 115 22 / 0.12);
+  --color-surface: #07090d;
+  --color-surface-raised: #0f1218;
+  --color-surface-card: #12161f;
+  --color-border: rgb(255 255 255 / 0.07);
+  --color-border-strong: rgb(255 255 255 / 0.12);
+  --shadow-soft: 0 24px 80px rgb(0 0 0 / 0.45);
 }
 
 @layer base {
@@ -23,5 +27,25 @@
   body {
     @apply bg-[var(--color-surface)] text-zinc-100 antialiased;
     font-family: var(--font-body);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    background: rgb(249 115 22 / 0.35);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .page-grid {
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 95%);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   }
 }

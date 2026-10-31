@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/cn';
 import { asset } from '../lib/asset';
-import { tapScale } from '../lib/motion';
+
+import { easeOut } from '../lib/motion';
 
 const links = [
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#work', label: 'Work' },
-  { href: '#contact', label: "Let's talk", cta: true },
 ];
 
 export function Header() {
@@ -16,7 +16,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -30,66 +30,93 @@ export function Header() {
   }, [open]);
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ease-out',
-        scrolled ? 'border-[var(--color-border)] bg-[var(--color-surface)]/90' : 'border-transparent bg-transparent'
-      )}
-    >
-      <nav
-        className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-4 pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] sm:px-6"
-        aria-label="Primary"
-      >
-        <a href="#top" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={asset('assets/logo.jpg')} alt="" width={40} height={40} className="size-10 shrink-0 rounded-full object-cover" />
-          <span className="min-w-0 leading-tight">
-            <span className="block font-[family-name:var(--font-display)] text-sm font-semibold uppercase sm:text-base">Blaze</span>
-            <span className="block text-[0.65rem] text-zinc-400 sm:text-xs">Consultancy</span>
-          </span>
-        </a>
-
-        <button
-          type="button"
-          className="inline-flex size-11 items-center justify-center rounded-lg border border-[var(--color-border)] sm:hidden"
-          aria-expanded={open}
-          aria-controls="nav-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((v) => !v)}
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6">
+        <div
+          className={cn(
+            'mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-[background-color,border-color,box-shadow] duration-200 ease-out sm:px-5',
+            scrolled
+              ? 'border-[var(--color-border-strong)] bg-[var(--color-surface)]/85 shadow-[0_8px_40px_rgb(0_0_0/0.35)]'
+              : 'border-[var(--color-border)] bg-[var(--color-surface)]/40'
+          )}
         >
-          <span className="sr-only">{open ? 'Close' : 'Menu'}</span>
-          <span className="flex flex-col gap-1.5">
+          <a href="#top" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+            <img
+              src={asset('assets/logo.jpg')}
+              alt=""
+              width={36}
+              height={36}
+              className="size-9 shrink-0 rounded-full object-cover ring-1 ring-white/10"
+            />
+            <span className="min-w-0">
+              <span className="block font-[family-name:var(--font-display)] text-sm font-semibold leading-none sm:text-base">
+                Blaze
+              </span>
+              <span className="mt-0.5 block text-[0.65rem] text-zinc-500 sm:text-xs">Consultancy</span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-4 py-2 text-sm text-zinc-400 transition-colors duration-150 ease-out hover:bg-white/[0.05] hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="ml-2 inline-flex min-h-10 items-center rounded-full bg-blaze px-5 text-sm font-semibold text-zinc-950 transition-transform duration-150 ease-out active:scale-[0.98]"
+            >
+              Let&apos;s talk
+            </a>
+          </nav>
+
+          <button
+            type="button"
+            className="relative inline-flex size-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border)] md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((v) => !v)}
+          >
             <span className={cn('block h-0.5 w-5 bg-zinc-100 transition-transform duration-200', open && 'translate-y-2 rotate-45')} />
             <span className={cn('block h-0.5 w-5 bg-zinc-100 transition-opacity duration-200', open && 'opacity-0')} />
             <span className={cn('block h-0.5 w-5 bg-zinc-100 transition-transform duration-200', open && '-translate-y-2 -rotate-45')} />
-          </span>
-        </button>
+          </button>
+        </div>
+      </header>
 
-        <ul
-          id="nav-menu"
-          className={cn(
-            'fixed inset-x-0 top-[4.25rem] flex flex-col gap-1 border-b border-[var(--color-border)] bg-[var(--color-surface)] p-4 sm:static sm:flex sm:flex-row sm:items-center sm:gap-6 sm:border-0 sm:bg-transparent sm:p-0',
-            open ? 'visible opacity-100' : 'invisible opacity-0 sm:visible sm:opacity-100'
-          )}
-        >
-          {links.map((link) => (
-            <li key={link.href}>
-              <motion.a
-                href={link.href}
-                className={cn(
-                  'block rounded-lg px-3 py-3 text-sm font-medium transition-colors duration-150 ease-out sm:py-2',
-                  link.cta
-                    ? 'bg-blaze text-zinc-950 sm:px-4'
-                    : 'text-zinc-300 hover:text-white active:text-white'
-                )}
-                onClick={() => setOpen(false)}
-                {...tapScale}
-              >
-                {link.label}
-              </motion.a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            id="mobile-nav"
+            className="fixed inset-0 z-40 bg-zinc-950/90 pt-28 backdrop-blur-sm md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: easeOut }}
+          >
+            <nav className="mx-auto flex max-w-lg flex-col gap-2 px-6" aria-label="Mobile">
+              {[...links, { href: '#contact', label: "Let's talk" }].map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-card)] px-5 py-4 text-lg font-medium"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.25, ease: easeOut }}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
   );
 }
