@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --color-blaze: #e85d04;
+  --color-surface: #0c0f14;
+  --color-surface-raised: #141922;
+  --color-border: rgb(255 255 255 / 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-[var(--color-surface)] text-zinc-100 antialiased;
+    font-family: var(--font-body);
+  }
+}
