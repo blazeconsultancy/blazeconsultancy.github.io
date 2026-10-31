@@ -166,8 +166,8 @@ app.innerHTML = `
       <div class="container contact-inner reveal">
         <h2>Ready to move?</h2>
         <p>Tell us what you are building. We will respond with a clear next step — no generic pitch deck.</p>
-        <a class="btn btn-primary btn-lg" href="mailto:blazeconsultancy309@gmail.com?subject=Project%20inquiry">blazeconsultancy309@gmail.com</a>
-        <p class="contact-alt">Or find us on <a href="https://github.com/blazeconsultancy">GitHub</a>.</p>
+        <a class="btn btn-primary btn-lg" href="mailto:support@blazeconsultancy.in?subject=Project%20inquiry">support@blazeconsultancy.in</a>
+        <p class="contact-alt">Connect on <a href="https://www.linkedin.com/in/blaze-consultancy/" rel="noopener noreferrer" target="_blank">LinkedIn</a>.</p>
       </div>
     </section>
   </main>
